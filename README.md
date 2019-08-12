@@ -16,13 +16,13 @@ Start with building a minimal Jupyter/Almond docker image:
 Run the docker image to serve our notebooks, 
 basically:
 
-    docker run --rm -it -v $PWD/notebooks:/home/jovyan/work jupyter-almond
+    docker run --rm -it -p 8888:8888 -v $PWD/notebooks:/home/jovyan/work jupyter-almond
 
 Of course it is possible to finetune some Jupyter aspects.
-For example, change the port number (8888 by default) if it is already in use
+For example, change the port number when it is already in use
 and predefine the Jupyter security token:
 
-    docker run --rm -it -v $PWD/notebooks:/home/jovyan/work -p 9999:8888 -e JUPYTER_TOKEN="s" jupyter-almond
+    docker run --rm -it -p 9999:8888 -v $PWD/notebooks:/home/jovyan/work -e JUPYTER_TOKEN="s" jupyter-almond
 
 Then go to http://localhost:9999/tree/work?token=s to access the notebooks.
 
